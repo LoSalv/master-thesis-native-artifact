@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Master Thesis Native Artifact</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="cpu">CPU</string>
+    <string name="ui">UI</string>
+    <string name="accelerometer">Accelerometer</string>
+</resources>
