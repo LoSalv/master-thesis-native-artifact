@@ -21,8 +21,6 @@ public class AccelerometerActivity extends AppCompatActivity {
     private SensorManager sensorManager;
 
     TextView averageText;
-    TextView minText;
-    TextView maxText;
     TextView accelerometerValuesText;
 
     ArrayList<Long> durations = new ArrayList<Long>();
@@ -36,8 +34,6 @@ public class AccelerometerActivity extends AppCompatActivity {
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         averageText = findViewById(R.id.averageText);
-//        minText = findViewById(R.id.minText);
-//        maxText= findViewById(R.id.maxText);
         accelerometerValuesText = findViewById(R.id.accValuesText);
     }
 
@@ -49,7 +45,7 @@ public class AccelerometerActivity extends AppCompatActivity {
         }
     }
 
-    private SensorEventListener listener = new SensorEventListener() {
+    private final SensorEventListener listener = new SensorEventListener() {
         @SuppressLint("SetTextI18n")
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -83,20 +79,14 @@ public class AccelerometerActivity extends AppCompatActivity {
             sensorManager.unregisterListener(listener);
         }
 
-        Long _average = 0l;
-        Long _max = 0l;
-        Long _min = 5000l;
+        Long _average = 0L;
 
         for (Long duration: durations) {
             _average += duration;
-            if (duration > _max) _max = duration;
-            if (duration < _min) _min = duration;
         }
 
         _average /= durations.size();
 
         averageText.setText("Average time between measurements: " + _average);
-//        minText.setText("Min: " + _min);
-//        maxText.setText("Max: " + _max);
     }
 }
